@@ -14,7 +14,7 @@
 
 <body>
     <?php
-    @include('navbar.php');
+    @include('template/navbar.php');
     ?>
 
 </body>
