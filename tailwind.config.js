@@ -11,9 +11,10 @@ module.exports = {
       nav: "#F2F0E2",
       blues: "#00113D",
       blues2: "#4BBCC7",
-      secondary: "#EBEBEB",
+      grey: "#EBEBEB",
       black: "#000000",
       white: "#FFFFFF",
+      red: "#FF0000",
     },
   },
   daisyui: {
