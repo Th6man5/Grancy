@@ -24,7 +24,7 @@
 
     </div>
     <div class=" flex bg-blues p-4 text-white gap-5 text-xl " style="font-family:  League Spartan, sans-serif;">
-        <a href="#about" class="ml-24 hover:opacity-70 transition-all">About</a>
-        <a href="#room" class="ml-10 hover:opacity-70 transition-all">Room Types</a>
+        <a href="http://localhost/grancy/src/homepage.php#about" class="ml-24 hover:opacity-70 transition-all">About</a>
+        <a href="http://localhost/grancy/src/homepage.php#room" class="ml-10 hover:opacity-70 transition-all">Room Types</a>
     </div>
 </div>

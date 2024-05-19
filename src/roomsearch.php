@@ -41,7 +41,7 @@
         @include('template/navbar.php');
         ?>
         <div class="w-full h-full px-20 mt-5">
-            <div class="flex w-full h-28 gap-x-2 p-8 shadow-lg bg-grey mx-auto">
+            <div class="flex w-full h-28 gap-x-2 p-8 shadow-lg bg-grey mx-auto justify-center">
                 <div class="flex-none join shadow-lg">
                     <div class="flex input w-48 items-center justify-center bg-white join-item">
                         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-none mr-2 ">
@@ -107,7 +107,7 @@
                 </div>
             </div>
 
-            <div class="flex-none w-fit h-full ml-10">
+            <div class="w-full h-full ml-10">
                 <h3 class="bg-grey w-full text-left text-3xl p-2">Features</h3>
                 <div class="w-full h-full mt-5">
                     <h4 class="text-left text-lg">
@@ -172,7 +172,7 @@
                             </div>
                         </div>
                         <div class="flex-none absolute right-0 text-xl">
-                            <a href="" class="bg-blues px-7 py-3 text-white rounded-lg">Book Now</a>
+                            <a href="http://localhost/grancy/src/checkout.php" class="bg-blues px-7 py-3 text-white rounded-lg">Book Now</a>
                         </div>
                     </div>
                 </div>
