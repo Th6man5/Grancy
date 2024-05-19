@@ -29,49 +29,53 @@
 </head>
 
 <body>
+    <?php
+    @include('template/navbar.php');
+    ?>
     <div class="w-full">
-        <?php
-        @include('template/navbar.php');
-        ?>
-    </div>
-    <img src="https://images.unsplash.com/photo-1488330890490-c291ecf62571?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="absolute h-screen w-full bg-contain">
-    <div class="absolute flex items-center justify-center place-content-center bg-black opacity-25 h-screen w-full">
-    </div>
-    <div class="absolute flex items-start justify-center place-content-center rounded-lg bg-white h-7/8 w-11/12 mt-12 ml-12">
-        <div class="items-start h-max w-3/5 mt-5">
-            <h1 class="items-start flex justify-center text-4xl">Make An Account</h1>
-            <form>
-                <p class="ml-20 mt-10">Fullname</p>
-                <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
-                    <input type="text" class="grow" placeholder="John Doe" />
-                </label>
-                <p class="ml-20 mt-3">Username</p>
-                <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
-                    <input type="text" class="grow" placeholder="username" />
-                </label>
-                <p class="ml-20 mt-3">Email</p>
-                <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
-                    <input type="text" class="grow" placeholder="email@gmail.com" />
-                </label>
-                <p class="ml-20 mt-3">Password</p>
-                <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
-                    <input type="password" class="grow" placeholder="" />
-                </label>
-                <div class="flex mt-10 justify-between  rounded-lg bg-transparent h-fit w-3/4 ml-20">
-                    <button href="" class="  rounded-lg bg-blues text-white hover:bg-black hover:drop-shadow-3xl hover:border-none w-1/4">Sign Up</button>
-                    <div class="text-center">
-                        <h6 class=" text-black">Already have an account?</h6>
-                        <button href="signin.php" class="text-blues">Sign In</button>
-                    </div>
+        <div class="relative flex items-center justify-center">
+            <div class="bg-black w-full">
+                <img src="https://images.unsplash.com/photo-1488330890490-c291ecf62571?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="h-screen w-full bg-contain opacity-50 pointer-events-none">
+            </div>
 
+            <div class="absolute top-0 bottom-0 left-0 right-0 flex rounded-lg bg-white w-11/12 mt-12 ml-12 mb-10">
+                <div class="items-start h-max w-3/5 mt-10">
+                    <h1 class="items-start flex justify-center text-4xl">Make An Account</h1>
+                    <form>
+                        <p class="ml-20 mt-10">Fullname</p>
+                        <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
+                            <input type="text" class="grow" placeholder="John Doe" />
+                        </label>
+                        <p class="ml-20 mt-3">Username</p>
+                        <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
+                            <input type="text" class="grow" placeholder="username" />
+                        </label>
+                        <p class="ml-20 mt-3">Email</p>
+                        <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
+                            <input type="text" class="grow" placeholder="email@gmail.com" />
+                        </label>
+                        <p class="ml-20 mt-3">Password</p>
+                        <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
+                            <input type="password" class="grow" placeholder="" />
+                        </label>
+                        <div class="flex mt-10 justify-between  rounded-lg bg-transparent h-fit w-3/4 ml-20">
+                            <button href="" class="  rounded-lg bg-blues text-white hover:bg-black hover:drop-shadow-3xl hover:border-none w-1/4">Sign Up</button>
+                            <div class="text-center">
+                                <h6 class=" text-black">Already have an account?</h6>
+                                <button href="signin.php" class="text-blues">Sign In</button>
+                            </div>
+
+                        </div>
+                    </form>
                 </div>
-            </form>
+                <div class="card inline items-center justify-end place-content-center w-2/5 h-full">
+                    <img src="https://images.unsplash.com/photo-1578329619724-7b15defabbfd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDU2fHxob3RlbHxlbnwwfHwwfHx8MA%3D%3D" class="h-full w-full object-cover  rounded-r-lg">
+                </div>
+            </div>
         </div>
-        <div class="card inline items-center justify-end place-content-center w-2/5">
-            <img src="https://images.unsplash.com/photo-1578329619724-7b15defabbfd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDU2fHxob3RlbHxlbnwwfHwwfHx8MA%3D%3D" class="h-fit w-full object-contain rounded-r-lg">
-        </div>
-    </div>
-
+        <?php
+        @include('template/footer.php');
+        ?>
     </div>
 
 

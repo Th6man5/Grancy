@@ -29,42 +29,52 @@
 </head>
 
 <body>
-    <div class="w-full">
+
+    <?php
+    @include('template/navbar.php');
+    ?>
+
+    <div class="w-full ">
+        <div class="relative flex items-center justify-center">
+            <div class="bg-black w-full">
+                <img src="https://images.unsplash.com/photo-1455587734955-081b22074882?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="h-screen w-full bg-contain opacity-50 pointer-events-none">
+            </div>
+
+            <div class="absolute top-0 bottom-0 left-0 right-0 flex rounded-lg bg-white w-11/12 mt-12 ml-12 mb-10">
+                <div class="items-start h-max w-3/5 mt-10">
+                    <h1 class="items-start flex justify-center text-4xl">Sign In To Your Account</h1>
+                    <form>
+                        <p class="ml-20 mt-10">Username</p>
+                        <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
+                            <input type="text" class="grow" placeholder="username" />
+                        </label>
+                        <p class="ml-20 mt-3">Password</p>
+                        <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
+                            <input type="password" class="grow" placeholder="******" />
+                        </label>
+                        <div class="flex mt-10 justify-between  rounded-lg bg-transparent h-fit w-3/4 ml-20">
+                            <button href="" class="  rounded-lg bg-blues text-white hover:bg-black hover:drop-shadow-3xl hover:border-none w-1/4">Sign In</button>
+                            <div class="text-center">
+                                <h6 class=" text-black">Don't have an account?</h6>
+                                <a href="signup.php" class="text-blues">Sign Up</a>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="card inline items-center justify-end place-content-center w-2/5 h-full ">
+                    <img src="https://images.unsplash.com/photo-1563911302283-d2bc129e7570?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="h-full w-full object-cover rounded-r-lg">
+                </div>
+
+            </div>
+        </div>
+
         <?php
-        @include('template/navbar.php');
+        @include('template/footer.php');
         ?>
     </div>
-    <img src="https://images.unsplash.com/photo-1455587734955-081b22074882?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="absolute h-screen w-full bg-contain">
-    <div class="absolute flex items-center justify-center place-content-center bg-black opacity-25 h-screen w-full">
-    </div>
-    <div class="absolute flex items-start justify-center place-content-center rounded-lg bg-white h-7/8 w-11/12 mt-12 ml-12">
-        <div class="items-start h-max w-3/5 mt-5">
-            <h1 class="items-start flex justify-center text-4xl">Sign In To Your Account</h1>
-            <form>
-                <p class="ml-20 mt-10">Username</p>
-                <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
-                    <input type="text" class="grow" placeholder="username" />
-                </label>
-                <p class="ml-20 mt-3">Password</p>
-                <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
-                    <input type="password" class="grow" placeholder="******" />
-                </label>
-                <div class="flex mt-10 justify-between  rounded-lg bg-transparent h-fit w-3/4 ml-20">
-                    <button href="" class="  rounded-lg bg-blues text-white hover:bg-black hover:drop-shadow-3xl hover:border-none w-1/4">Sign In</button>
-                    <div class="text-center">
-                        <h6 class=" text-black">Don't have an account?</h6>
-                        <button href="signup.php" class="text-blues">Sign Up</button>
-                    </div>
 
-                </div>
-            </form>
-        </div>
-        <div class="card inline items-center justify-end place-content-center w-2/5">
-            <img src="https://images.unsplash.com/photo-1563911302283-d2bc129e7570?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="h-fit w-full object-contain rounded-r-lg">
-        </div>
-    </div>
 
-    </div>
 
 
 </body>
