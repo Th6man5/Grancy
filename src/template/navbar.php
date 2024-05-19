@@ -1,6 +1,6 @@
 <div class="w-full drop-shadow-lg z-20">
     <div class=" flex p-3 bg-nav text-black items-center justify-between">
-        <a href="" class="uppercase text-4xl" style="font-family: Krona One;">Grancy Hotel</a>
+        <a href="http://localhost/grancy/src/homepage.php" class="uppercase text-4xl" style="font-family: Krona One;">Grancy Hotel</a>
         <div class="flex  text-black mr-3">
             <div class="flex items-center group ">
                 <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-2   opacity-70 group-hover:opacity-100 transition-all">
@@ -8,7 +8,7 @@
                     <path d="M25.0001 22.9167C29.6025 22.9167 33.3334 19.1857 33.3334 14.5833C33.3334 9.98096 29.6025 6.25 25.0001 6.25C20.3977 6.25 16.6667 9.98096 16.6667 14.5833C16.6667 19.1857 20.3977 22.9167 25.0001 22.9167Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
 
-                <a href="" class="text-xl opacity-70  group-hover:opacity-100 transition-all" style="font-family:  League Spartan, sans-serif;">Sign In</a>
+                <a href="http://localhost/grancy/src/signin.php" class="text-xl opacity-70  group-hover:opacity-100 transition-all" style="font-family:  League Spartan, sans-serif;">Sign In</a>
             </div>
 
             <svg width="1" height="50" viewBox="0 0 1 70" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-5">
@@ -16,7 +16,7 @@
             </svg>
 
             <div class="flex items-center">
-                <a href="" class="text-xl opacity-70 hover:opacity-100 transition-all" style="font-family:  League Spartan, sans-serif;">Sign Up</a>
+                <a href="http://localhost/grancy/src/signup.php" class="text-xl opacity-70 hover:opacity-100 transition-all" style="font-family:  League Spartan, sans-serif;">Sign Up</a>
             </div>
 
         </div>

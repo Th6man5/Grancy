@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=League+Spartan:wght@100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 
         h2 {
             font-family: Krona One;
@@ -19,6 +20,15 @@
 
         p {
             font-family: League Spartan, sans-serif;
+            font-weight: 300;
+        }
+
+        h3 {
+            font-family: Lexend;
+        }
+
+        h4 {
+            font-family: Lexend;
             font-weight: 300;
         }
     </style>
@@ -57,7 +67,7 @@
 
 
         <h1 class="text-center text-8xl" id="room">Room Types</h1>
-        <div class="grid grid-cols-2 grid-rows-2 w-full px-32 pt-32 gap-x-44 gap-y-32 justify-center">
+        <div class="grid grid-cols-2 grid-rows-2 w-full px-32 pt-32 gap-x-44 gap-y-32 justify-center h-full mb-32">
             <div class="w-full h-96 relative">
                 <div class="w-full h-full relative ">
                     <img src="https://images.tokopedia.net/blog-tokopedia-com/uploads/2020/02/1.-standard-room-sumber-gambar-Pixabay.jpg" class="h-backdrop w-backdrop z-20 rounded-xl shadow-md absolute bottom-0 right-0">
@@ -87,7 +97,11 @@
                 <p class="text-center text-5xl mt-5">Twin Room</p>
             </div>
         </div>
+        <?php
+        @include('template/footer.php');
+        ?>
     </div>
+
 </body>
 
 </html>

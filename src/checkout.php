@@ -87,6 +87,11 @@
                     <a href="" class="bg-blues px-7 py-3 text-white rounded-lg mt-5">Checkout</a>
                 </div>
             </div>
-        </div>
 
+
+        </div>
+        <?php
+        @include('template/footer.php');
+        ?>
+    </div>
 </body>
