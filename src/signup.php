@@ -30,8 +30,48 @@
 
 <body>
     <?php
-    @include('template/navbar.php');
+    include('template/navbar.php');
     ?>
+
+    <?php
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    include('database/database.php');
+
+    if (isset($_POST['submit'])) {
+        $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $phone_numb = mysqli_real_escape_string($conn, $_POST['phone_numb']);
+        $password = $_POST['password'];
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $error[] = 'User already exists!';
+        } else {
+            $insert_stmt = $conn->prepare("INSERT INTO users (fullname, email, password, phone_numb) VALUES (?, ?, ?, ?)");
+            $insert_stmt->bind_param("ssss", $fullname, $email, $hashed_password, $phone_numb);
+            if ($insert_stmt->execute()) {
+                header('Location: signin.php');
+                exit();
+            } else {
+                $error[] = 'Failed to register user!';
+            }
+            $insert_stmt->close();
+        }
+
+        $stmt->close();
+    }
+
+    ?>
+
+
     <div class="w-full">
         <div class="relative flex items-center justify-center">
             <div class="bg-black w-full">
@@ -41,30 +81,38 @@
             <div class="absolute top-0 bottom-0 left-0 right-0 flex rounded-lg bg-white w-11/12 mt-12 ml-12 mb-10">
                 <div class="items-start h-max w-3/5 mt-10">
                     <h1 class="items-start flex justify-center text-4xl">Make An Account</h1>
-                    <form>
+
+                    <?php
+                    if (!empty($error)) {
+                        foreach ($error as $err) {
+                            echo "<p class='text-red text-sm text-center mt-10'>$err</p>";
+                        }
+                    }
+                    ?>
+
+                    <form method="POST" action="signup.php">
                         <p class="ml-20 mt-10">Fullname</p>
                         <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
-                            <input type="text" class="grow" placeholder="John Doe" />
+                            <input type="text" class="grow" placeholder="John Doe" name="fullname" required />
                         </label>
-                        <p class="ml-20 mt-3">Username</p>
+                        <p class="ml-20 mt-3">Phone Number</p>
                         <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
-                            <input type="text" class="grow" placeholder="username" />
+                            <input type="number" class="grow" placeholder="phone Number" name="phone_numb" required />
                         </label>
                         <p class="ml-20 mt-3">Email</p>
                         <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
-                            <input type="text" class="grow" placeholder="email@gmail.com" />
+                            <input type="text" class="grow" placeholder="email@gmail.com" name="email" required />
                         </label>
                         <p class="ml-20 mt-3">Password</p>
                         <label class="input drop-shadow-3xl bg-grey flex items-center gap-2 mt-1 w-3/4 ml-20">
-                            <input type="password" class="grow" placeholder="" />
+                            <input type="password" class="grow" placeholder="" name="password" required />
                         </label>
                         <div class="flex mt-10 justify-between  rounded-lg bg-transparent h-fit w-3/4 ml-20">
-                            <button href="" class="  rounded-lg bg-blues text-white hover:bg-black hover:drop-shadow-3xl hover:border-none w-1/4">Sign Up</button>
+                            <input type="submit" name="submit" value="Sign up" class="rounded-lg bg-blues text-white hover:bg-black hover:drop-shadow-3xl hover:border-none w-1/4"></input>
                             <div class="text-center">
                                 <h6 class=" text-black">Already have an account?</h6>
-                                <button href="signin.php" class="text-blues">Sign In</button>
+                                <a href="signin.php" class="text-blues">Sign In</a>
                             </div>
-
                         </div>
                     </form>
                 </div>
