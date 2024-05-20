@@ -55,11 +55,13 @@
 
             if (password_verify($password, $row['password'])) {
                 if ($row['user_type'] == 'admin') {
-                    $_SESSION['admin_name'] = $row['fullname'];
-                    header('Location: admin_page.php');
+                    $_SESSION['user_name'] = $row['fullname'];
+                    $_SESSION['admin'] = $row['user_type'];
+                    header('Location: admindashboard.php');
                     exit();
                 } elseif ($row['user_type'] == 'user') {
                     $_SESSION['user_name'] = $row['fullname'];
+                    $_SESSION['user'] = $row['user_type'];
                     header('Location: homepage.php');
                     exit();
                 } else {
