@@ -9,3 +9,52 @@ CREATE TABLE users (
     password VARCHAR(255),
     user_type VARCHAR(50) DEFAULT 'user'
 );
+
+CREATE TABLE room_type (
+    type_id INT AUTO_INCREMENT PRIMARY KEY,
+    type_name VARCHAR(255),
+    square_meter INT,
+    square_foot INT,
+    about VARCHAR(255),
+    feature text,
+    bath text,
+    intertainment text,
+    equipment text,
+    refreshments text,
+    picture blob
+);
+
+--Buat Insert tabel room_type
+INSERT INTO room_type (
+	type_name,
+    square_meter,
+    square_foot,
+    about,
+    feature,
+    bath,
+    intertainment,
+    equipment,
+    refreshments
+) VALUES (
+	'Standard',
+    '45',
+    '484',
+    'A standard room in our hotel offers a comfortable and relaxing stay featuring a cozy queen-sized bed a modern ensuite 		bathroom a flat-screen TV free Wi-Fi and a spacious work desk Enjoy complimentary coffee and tea making facilities 		 and a serene atmosphere perfect for both business and leisure travelers',
+    'Full-size window with sweeping views of the Surabaya cityscape.
+	 An indulgent bed with duvet.
+	 Marble bathroom with separate shower.',
+    'Pillow menu
+	 Duvet
+     Grancy Hotel amenities
+	 Iron and ironing board',
+    'Wireless Internet access
+	 LCD television
+	 Closed-circuit TV channels',
+    'Full size executive writing desk
+	 International Direct Dial telephone
+	 Independent fax line
+	 Voice mail
+	 Electronic safe',
+    'Coffee / tea-making facilities
+	 24-hour room service'
+);
