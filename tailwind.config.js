@@ -23,7 +23,13 @@ module.exports = {
     },
   },
   daisyui: {
-    themes: [],
+    themes: [
+      {
+        mytheme: {
+          primary: "#00113D",
+        },
+      },
+    ],
   },
   plugins: [require("daisyui")],
 };
