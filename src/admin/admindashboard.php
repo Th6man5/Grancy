@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link href="./output.css" rel="stylesheet">
+    <link href="../css/output.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=League+Spartan:wght@100..900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
@@ -39,12 +39,12 @@ if ($_SESSION['admin']) {
 
     <body>
         <?php
-        include('template/sidebar.php');
+        include('./admintemplate/sidebar.php');
         ?>
 
         <div class="p-4 sm:ml-64">
             <div class="p-4 mt-14">
-                <h1>Rooms</h1>
+                <h1>Dashboard</h1>
                 <div class="grid grid-cols-4 gap-4 mb-4">
                     <div class="grid grid-rows-3 h-36 rounded bg-gray-50 dark:bg-gray-800 col-span-2 bg-blues2">
                         <p class="flex justify-center items-center text-2xl text-gray-400 dark:text-gray-500  card-title">

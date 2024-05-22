@@ -1,5 +1,6 @@
 CREATE DATABASE `grancy_hotel`;
 
+--buat tabel users
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     fullname VARCHAR(255),
@@ -10,6 +11,7 @@ CREATE TABLE users (
     user_type VARCHAR(50) DEFAULT 'user'
 );
 
+--buat tabel room_type
 CREATE TABLE room_type (
     type_id INT AUTO_INCREMENT PRIMARY KEY,
     type_name VARCHAR(255),
