@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link href="../css/output.css" rel="stylesheet">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=League+Spartan:wght@100..900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
