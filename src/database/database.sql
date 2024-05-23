@@ -23,7 +23,8 @@ CREATE TABLE room_type (
     intertainment text,
     equipment text,
     refreshments text,
-    picture blob
+    picture blob,
+    price INT
 );
 
 --Buat Insert tabel room_type
@@ -36,7 +37,8 @@ INSERT INTO room_type (
     bath,
     intertainment,
     equipment,
-    refreshments
+    refreshments,
+    price
 ) VALUES (
 	'Standard',
     '45',
@@ -58,5 +60,6 @@ INSERT INTO room_type (
 	 Voice mail
 	 Electronic safe',
     'Coffee / tea-making facilities
-	 24-hour room service'
+	 24-hour room service',
+     '1000000'
 );
