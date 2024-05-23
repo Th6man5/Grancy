@@ -55,17 +55,21 @@ if ($_SESSION['admin']) {
 
                     $sql = "SELECT * FROM room_type";
                     $result = mysqli_query($conn, $sql);
-
-                    // Check if there are results
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<div class="relative">
-                                      <img src="https://plus.unsplash.com/premium_photo-1675615667752-2ccda7042e7e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-t-md w-full h-1/2 object-cover">
+                            echo '<div class="relative w-fit h-fit">
+                                      <img src="';
+                            if (!empty($row['picture'])) {
+                                echo htmlspecialchars($row['picture'], ENT_QUOTES, 'UTF-8') . '"';
+                            } else {
+                                echo "https://plus.unsplash.com/premium_photo-1675615667752-2ccda7042e7e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+                            }
+                            echo  'class="rounded-t-md w-full h-1/2 object-cover">
                                       <div class="absolute top-0 left-0 bg-blues rounded-tl-sm rounded-br-md">
                                           <h1 class="text-white p-2 px-4 text-lg">' . htmlspecialchars($row['type_name']) . '</h1>
                                       </div>
                                       <div class="bg-white rounded-b-md p-5 flex justify-center gap-x-4 shadow-md">
-                                          <a href="/grancy/src/admin/adminroomtype_edit.php?id=' . $row['id'] . '" class="btn bg-yellow hover:shadow-md hover:bg-yellow group" onclick="my_modal_4.showModal()">
+                                          <a href="/grancy/src/admin/adminroomtype_edit.php?id=' . $row['type_id'] . '" class="btn bg-yellow hover:shadow-md hover:bg-yellow group" onclick="my_modal_4.showModal()">
                                               <i class="bi bi-pencil-square group-hover:pe-2 transition-all"></i>
                                               Edit
                                           </a>
@@ -73,7 +77,7 @@ if ($_SESSION['admin']) {
                                               <i class="bi bi-eye-fill group-hover:pe-2 transition-all"></i>
                                               View
                                           </a>
-                                          <a class="btn bg-red hover:shadow-md hover:bg-red group">
+                                          <a onclick="return confirm(\'Are you sure you want to delete this room type?\');" href="/grancy/src/admin/adminroomtype_delete.php?id=' . $row['type_id'] . '"  class="btn bg-red hover:shadow-md hover:bg-red group">
                                               <i class="bi bi-trash-fill group-hover:pe-2 transition-all"></i>
                                               Delete
                                           </a>
