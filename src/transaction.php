@@ -44,7 +44,7 @@
             <a href="" class="text-xl" style="font-family: Lexend;">Back</a>
             <h3 class="bg-grey w-full text-center text-2xl p-2">Hotel Voucher</h3>
             <h3 class="text-lg text-left text-neutral-500">Please PRINT this voucher and bring when you CHECK IN in Grancy Hotel. Bring your credit card if your payment using credit card</h3>
-            
+
             <div class="relative flex items-center my-20">
                 <div class="flex-none join items-center justify-center border-neutral-500 border-2">
                     <div class="flex input w-60 items-center bg-white join-item">
@@ -122,38 +122,39 @@
 
             <h3 class="bg-grey w-full text-center text-2xl p-2">Payment Method</h3>
 
-                <div class="w-1/2 my-20">
-                    <div class="flex w-1/2 mb-4">
-                        <h3 class="flex-none w-full text-2xl">Payment Type</h3>
-                        <h3 class="flex-none w-fit text-2xl">:</h3>
-                        <h4 class="flex-none w-full text-2xl">Virtual Payment, Gopay</h4>
-                    </div>
-                    <div class="flex w-1/2 mb-4">
-                        <h3 class="flex-none w-full text-2xl">Charge</h3>
-                        <h3 class="flex-none w-fit text-2xl">:</h3>
-                        <h4 class="flex-none w-full text-2xl">Rp1.643.500</h4>
-                    </div>
+            <div class="w-1/2 my-20">
+                <div class="flex w-1/2 mb-4">
+                    <h3 class="flex-none w-full text-2xl">Payment Type</h3>
+                    <h3 class="flex-none w-fit text-2xl">:</h3>
+                    <h4 class="flex-none w-full text-2xl">Virtual Payment, Gopay</h4>
                 </div>
+                <div class="flex w-1/2 mb-4">
+                    <h3 class="flex-none w-full text-2xl">Charge</h3>
+                    <h3 class="flex-none w-fit text-2xl">:</h3>
+                    <h4 class="flex-none w-full text-2xl">Rp1.643.500</h4>
+                </div>
+            </div>
 
-                <div class="grid grid-cols-3 py-20">
-                    <h4 class="text-lg text-neutral-500">If you need help, reach us</h4>
-                    <div class="flex items-center justify-center">
-                        <h3 class="flex-none text-lg">Customer Service :</h3>
-                        <h4 class="flex-none text-lg">0813-0005-511</h4>
-                    </div>
-                    <div class="flex items-end justify-end">
-                        <h3 class="flex-none text-lg">Email :</h3>
-                        <h4 class="flex-none text-lg">cs@grancy.com</h4>
-                    </div>
+            <div class="grid grid-cols-3 py-20">
+                <h4 class="text-lg text-neutral-500">If you need help, reach us</h4>
+                <div class="flex items-center justify-center">
+                    <h3 class="flex-none text-lg">Customer Service :</h3>
+                    <h4 class="flex-none text-lg">0813-0005-511</h4>
                 </div>
+                <div class="flex items-end justify-end">
+                    <h3 class="flex-none text-lg">Email :</h3>
+                    <h4 class="flex-none text-lg">cs@grancy.com</h4>
+                </div>
+            </div>
 
-                <div class="flex-none text-xl mb-80">
-                    <a href="" class="bg-blues px-7 py-3 text-white rounded-lg">Print</a>
-                </div>
+            <div class="flex-none text-xl mb-80">
+                <a href="" class="bg-blues px-7 py-3 text-white rounded-lg">Print</a>
+            </div>
 
         </div>
         <?php
         @include('template/footer.php');
         ?>
 </body>
+
 </html>

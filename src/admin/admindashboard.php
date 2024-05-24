@@ -53,7 +53,14 @@ if ($_SESSION['admin']) {
                             </svg>
                             New Users
                         </p>
-                        <h1 class="flex justify-center items-center">6</h1>
+                        <?php
+                        include('../database/database.php');
+                        $sql = "SELECT COUNT(*) as total FROM users;";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_array($result);
+
+                        ?>
+                        <h1 class="flex justify-center items-center"><?php echo $row['total'] ?></h1>
                         <div class="flex justify-end items-center">
                             <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info...</button>
                         </div>
@@ -89,7 +96,14 @@ if ($_SESSION['admin']) {
                             </svg>
                             Room Types
                         </p>
-                        <h1 class="flex justify-center items-center">6</h1>
+                        <?php
+                        include('../database/database.php');
+                        $sql = "SELECT COUNT(*) as total FROM room_type;";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_array($result);
+
+                        ?>
+                        <h1 class="flex justify-center items-center"><?php echo $row['total'] ?></h1>
                         <div class="flex justify-end items-center">
                             <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info...</button>
                         </div>
