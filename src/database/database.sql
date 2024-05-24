@@ -4,12 +4,14 @@ CREATE DATABASE `grancy_hotel`;
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     fullname VARCHAR(255),
-    username VARCHAR(100),
+    username VARCHAR(100) NULL,
     phone_numb INT(12),
     email VARCHAR(255),
     password VARCHAR(255),
     user_type VARCHAR(50) DEFAULT 'user'
 );
+
+INSERT INTO users (user_id, fullname, email) VALUES (0, 'tumbal', 'tumbal@gmail.com');
 
 --buat tabel room_type
 CREATE TABLE room_type (
@@ -26,6 +28,19 @@ CREATE TABLE room_type (
     picture blob,
     price INT
 );
+
+--buat tabel rooms
+CREATE TABLE rooms(
+    room_id INT AUTO_INCREMENT PRIMARY KEY,
+    room_number VARCHAR(255),
+    status VARCHAR(50),
+    floor INT,
+    type_id INT,
+    user_id INT NULL,
+    CONSTRAINT type_id FOREIGN KEY (type_id) REFERENCES room_type(type_id),
+    CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
 
 --Buat Insert tabel room_type
 INSERT INTO room_type (
@@ -63,3 +78,5 @@ INSERT INTO room_type (
 	 24-hour room service',
      '1000000'
 );
+
+
