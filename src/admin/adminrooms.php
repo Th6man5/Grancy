@@ -56,7 +56,7 @@ if ($_SESSION['admin']) {
                         </p>
                         <h1 class="flex justify-center items-center">6</h1>
                         <div class="flex justify-end items-center">
-                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info</button>
+                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info...</button>
                         </div>
                     </div>
                     <div class="grid grid-rows-3 h-36 rounded bg-gray-50 dark:bg-gray-800 col-span-2 bg-blues2">
@@ -68,7 +68,7 @@ if ($_SESSION['admin']) {
                         </p>
                         <h1 class="flex justify-center items-center">5</h1>
                         <div class="flex justify-end items-center">
-                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info</button>
+                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info...</button>
                         </div>
                     </div>
                     <div class="grid grid-rows-3 h-36 rounded bg-gray-50 dark:bg-gray-800 col-span-2 bg-blues2">
@@ -80,7 +80,7 @@ if ($_SESSION['admin']) {
                         </p>
                         <h1 class="flex justify-center items-center">6</h1>
                         <div class="flex justify-end items-center">
-                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info</button>
+                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info...</button>
                         </div>
                     </div>
                     <div class="grid grid-rows-3 h-36 rounded bg-gray-50 dark:bg-gray-800 col-span-2 bg-blues2">
@@ -92,9 +92,57 @@ if ($_SESSION['admin']) {
                         </p>
                         <h1 class="flex justify-center items-center">6</h1>
                         <div class="flex justify-end items-center">
-                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info</button>
+                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info...</button>
                         </div>
                     </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="table">
+                        <!-- head -->
+                        <thead>
+                        <tr class="bg-blues2">
+                            <th>No</th>
+                            <th>Room Number</th>
+                            <th>Rooms Type</th>
+                            <th>Floor</th>
+                            <th>Availability</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- row 1 -->
+                        <tr>
+                            <th>1</th>
+                            <td>101</td>
+                            <td>single</td>
+                            <td>Floor 1</td>
+                            <td>Avail</td>
+                        </tr>
+                        <!-- row 2 -->
+                        <tr>
+                            <th>2</th>
+                            <td>102</td>
+                            <td>master</td>
+                            <td>Floor 1</td>
+                            <td>Booked</td>
+                        </tr>
+                        <!-- row 3 -->
+                        <tr>
+                            <th>3</th>
+                            <td>203</td>
+                            <td>single</td>
+                            <td>Floor 2</td>
+                            <td>Avail</td>
+                        </tr>
+                        <!-- row 4 -->
+                        <tr>
+                            <th>3</th>
+                            <td>301</td>
+                            <td>single</td>
+                            <td>Floor 3</td>
+                            <td>Avail</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
