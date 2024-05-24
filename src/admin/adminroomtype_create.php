@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         // Process file upload
-        $targetDir = "../database/uploads/"; // Set your target directory
+        $targetDir = "../database/uploads/";
         $targetFile = $targetDir . basename($picture['name']);
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
         $allowedTypes = array('jpg', 'png', 'jpeg');

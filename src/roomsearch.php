@@ -1,10 +1,20 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (!isset($_GET['id'])) {
+        header('Location: /grancy/src/admin/adminroomtype.php');
+        exit;
+    }
+    $id = $_GET['id'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./output.css" rel="stylesheet">
+    <link href="./css/output.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=League+Spartan:wght@100..900&display=swap');
@@ -40,7 +50,11 @@
         <?php
         @include('template/navbar.php');
         ?>
-        <div class="w-full h-full px-20 mt-5">
+
+        <?php
+        ini_set('display_errors', 0);
+        if ($_SESSION['user']) {
+            echo ' <div class="w-full h-full px-20 mt-5">
             <div class="flex w-full h-28 gap-x-2 p-8 shadow-lg bg-grey mx-auto justify-center">
                 <div class="flex-none join shadow-lg">
                     <div class="flex input w-48 items-center justify-center bg-white join-item">
@@ -94,16 +108,25 @@
                     </svg>
                 </div>
             </div>
-        </div>
+        </div>';
+        }
+        ?>
 
-        <div class="flex relative w-full h-full p-20">
+
+        <?php
+        include('database/database.php');
+        $sql = "SELECT * FROM room_type WHERE type_id = $id";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo '<div class="flex relative w-full h-full p-20">
             <div class="flex-none w-80 h-fit">
                 <div class="w-fit h-fit">
                     <img src="https://plus.unsplash.com/premium_photo-1675615667752-2ccda7042e7e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-md">
                 </div>
                 <div class="mt-5">
-                    <h3 class="text-center text-3xl">Standard Room</h3>
-                    <p class="text-center text-lg">40 - 45 sqm / 431 - 484 sqf</p>
+                    <h3 class="text-center text-3xl">' . htmlspecialchars($row['type_name'])   . '</h3>
+                    <p class="text-center text-lg"> ' . $row['square_meter'] . ' sqm / ' . $row['square_foot'] . ' sqf</p>
                 </div>
             </div>
 
@@ -112,9 +135,7 @@
                 <div class="w-full h-full mt-5">
                     <h4 class="text-left text-lg">
                         <ul class="list-disc ml-10">
-                            <li>Full-size window with sweeping views of the Surabaya cityscape</li>
-                            <li>An indugent bed with duvet</li>
-                            <li>Marble bathroom with separate shower</li>
+                          ' . $row['feature'] . '
                         </ul>
                     </h4>
                 </div>
@@ -124,10 +145,7 @@
                         <h3 class="text-left text-xl">Bath & Personal Care</h3>
                         <h4 class="text-left text-lg">
                             <ul class="list-disc ml-10">
-                                <li>Pillow menu</li>
-                                <li>Duvet</li>
-                                <li>Grancy Hotel amenities</li>
-                                <li>Iron and ironing board</li>
+                               ' . $row['bath'] . '
                             </ul>
                         </h4>
                     </div>
@@ -135,9 +153,7 @@
                         <h3 class="text-left text-xl">Media & Entertaiment</h3>
                         <h4 class="text-left text-lg">
                             <ul class="list-disc ml-10">
-                                <li>Wireless Internet access</li>
-                                <li>LCD television</li>
-                                <li>Closed-circuit TV channels</li>
+                                ' . $row['intertainment'] . '
                             </ul>
                         </h4>
                     </div>
@@ -145,11 +161,7 @@
                         <h3 class="text-left text-xl">Office Equipment & Stationery</h3>
                         <h4 class="text-left text-lg">
                             <ul class="list-disc ml-10">
-                                <li>Full size executive writing desk</li>
-                                <li>International Direct Dial telephone</li>
-                                <li>Independent fax line</li>
-                                <li>Voice mail</li>
-                                <li>Electronic safe</li>
+                               ' . $row['equipment'] . '
                             </ul>
                         </h4>
                     </div>
@@ -157,8 +169,7 @@
                         <h3 class="text-left text-xl">Refreshments</h3>
                         <h4 class="text-left text-lg">
                             <ul class="list-disc ml-10">
-                                <li>Coffee / tea-making facilities</li>
-                                <li>24-hour room service</li>
+                              ' . $row['refreshments'] . '
                             </ul>
                         </h4>
                     </div>
@@ -167,7 +178,7 @@
                     <div class="flex w-fit">
                         <div class="absolute right-40 text-xl">
                             <div class="flex">
-                                <h4 class="flex-none">IDR 1,643,500</h4>
+                                <h4 class="flex-none">IDR ' . $row['price'] . '</h4>
                                 <h3 class="flex-none text-blues2">/night</h3>
                             </div>
                         </div>
@@ -177,7 +188,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>';
+            }
+        } else {
+            echo "0 results";
+        }
+        ?>
+
         <?php
         @include('template/footer.php');
         ?>
