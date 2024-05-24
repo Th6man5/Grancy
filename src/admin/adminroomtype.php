@@ -73,7 +73,7 @@ if ($_SESSION['admin']) {
                                               <i class="bi bi-pencil-square group-hover:pe-2 transition-all"></i>
                                               Edit
                                           </a>
-                                          <a class="btn bg-blues2 hover:shadow-md hover:bg-blues2 group">
+                                          <a href="/grancy/src/roomsearch.php?id=' . $row['type_id'] . '"  class="btn bg-blues2 hover:shadow-md hover:bg-blues2 group">
                                               <i class="bi bi-eye-fill group-hover:pe-2 transition-all"></i>
                                               View
                                           </a>
