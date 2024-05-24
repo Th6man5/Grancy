@@ -55,7 +55,7 @@ if ($_SESSION['admin']) {
                         </p>
                         <h1 class="flex justify-center items-center">6</h1>
                         <div class="flex justify-end items-center">
-                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info</button>
+                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info...</button>
                         </div>
                     </div>
                     <div class="grid grid-rows-3 h-36 rounded bg-gray-50 dark:bg-gray-800 col-span-2 bg-blues2">
@@ -67,7 +67,7 @@ if ($_SESSION['admin']) {
                         </p>
                         <h1 class="flex justify-center items-center">5</h1>
                         <div class="flex justify-end items-center">
-                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info</button>
+                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info...</button>
                         </div>
                     </div>
                     <div class="grid grid-rows-3 h-36 rounded bg-gray-50 dark:bg-gray-800 col-span-2 bg-blues2">
@@ -79,7 +79,7 @@ if ($_SESSION['admin']) {
                         </p>
                         <h1 class="flex justify-center items-center">6</h1>
                         <div class="flex justify-end items-center">
-                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info</button>
+                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info...</button>
                         </div>
                     </div>
                     <div class="grid grid-rows-3 h-36 rounded bg-gray-50 dark:bg-gray-800 col-span-2 bg-blues2">
@@ -91,7 +91,7 @@ if ($_SESSION['admin']) {
                         </p>
                         <h1 class="flex justify-center items-center">6</h1>
                         <div class="flex justify-end items-center">
-                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info</button>
+                            <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info...</button>
                         </div>
                     </div>
                 </div>
