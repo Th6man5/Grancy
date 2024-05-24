@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!isset($_GET['id'])) {
-        header('Location: /grancy/src/admin/adminroomtype.php');
+        header('Location: /grancy/src/homepage.php');
         exit;
     }
     $id = $_GET['id'];
