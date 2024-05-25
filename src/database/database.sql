@@ -41,6 +41,18 @@ CREATE TABLE rooms(
     CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
+--tabel booking
+CREATE TABLE bookings (
+    booking_id INT AUTO_INCREMENT PRIMARY KEY,
+    checkin DATE NOT NULL,
+    checkout DATE NOT NULL,
+    guest INT NOT NULL,
+    status VARCHAR(50) DEFAULT 'booked',
+    room_id INT NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY (room_id) REFERENCES rooms(room_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
 
 --Buat Insert tabel room_type
 INSERT INTO room_type (

@@ -1,3 +1,19 @@
+<?php
+//SIMPEN DATA SEARCsd ROOM
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (!isset($_GET['checkin']) || !isset($_GET['checkout']) || !isset($_GET['guest']) || !isset($_GET['type_id'])) {
+        header('Location: /grancy/src/homepage.php');
+        exit;
+    }
+    $checkin = $_GET['checkin'];
+    $checkout = $_GET['checkout'];
+    $guest = $_GET['guest'];
+    $type_id = $_GET['type_id'];
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +57,7 @@
         @include('template/navbar.php');
         ?>
         <div class="p-20">
-            <a href="/grancy/src/roomsearch.php" class="text-xl" style="font-family: Lexend;">Back</a>
+            <a href="javascript:history.back()" class="text-xl" style="font-family: Lexend;">Back</a>
             <h3 class="bg-grey w-full text-center text-2xl p-2">Summary</h3>
             <div class="w-full h-full grid grid-cols-3 grid-flow-col">
                 <div class="pr-10 pt-10 w-fit h-fit col-span-1">
@@ -50,33 +66,43 @@
                 <div class="pt-10 text-xl col-span-2 leading-loose relative ">
                     <div class="flex w-fit gap-x-4">
                         <h3>Date:</h3>
-                        <h4>Monday, 15 may 2024</h4>
+                        <h4><?php echo $checkin; ?></h4>
                         <h4>-</h4>
-                        <h4>Tuesday, 16 may 2024</h4>
+                        <h4><?php echo $checkout; ?></h4>
                     </div>
                     <div class="flex w-fit gap-x-4">
-                        <h3>Rooms & Guest:</h3>
-                        <h4>1 Rooms</h4>
-                        <h4>,</h4>
-                        <h4>1 Guests</h4>
+                        <h3>Guest:</h3>
+                        <h4><?php echo $guest; ?></h4>
                     </div>
                     <div class="flex w-fit gap-x-4">
                         <h3>Room Type:</h3>
-                        <h4>Standard</h4>
+                        <h4>
+                            <?php
+                            include('./database/database.php');
+                            $sql = "SELECT * FROM room_type where type_id = $type_id";
+                            $result = mysqli_query($conn, $sql);
+                            while ($row = mysqli_fetch_array($result)) {
+                                echo $row['type_name'];
+                            }
+                            ?>
+                        </h4>
                     </div>
                     <div class="flex w-full gap-x-4">
                         <h3>Room Floor:</h3>
                         <select class="select w-fit bg-grey text-lg drop-shadow-3xl">
                             <option disabled selected class="text-xl">0</option>
-                            <option class="text-xl">1</option>
-                            <option class="text-xl">2</option>
-                            <option class="text-xl">3</option>
-                            <option class="text-xl">4</option>
-                            <option class="text-xl">5</option>
-                            <option class="text-xl">6</option>
-                            <option class="text-xl">7</option>
-                            <option class="text-xl">8</option>
-                            <option class="text-xl">9</option>
+                            <?php
+                            include('./database/database.php');
+                            $sql = "SELECT DISTINCT floor FROM rooms WHERE type_id = $type_id AND status = 'available'";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo '<option class="text-xl">' . htmlspecialchars($row['floor']) . '</option>';
+                                }
+                            } else {
+                                echo '<option class="text-xl" disabled>No available floors</option>';
+                            }
+                            ?>
                         </select>
                     </div>
 
@@ -91,7 +117,16 @@
                 </div>
                 <div class="text-xl flex justify-start items-center gap-x-4 -ml-3">
                     <h3>Total Charges:</h3>
-                    <h4>IDR 1.643.500</h4>
+                    <h4>
+                        <?php
+                        include('./database/database.php');
+                        $sql = "SELECT * FROM room_type where type_id = $type_id";
+                        $result = mysqli_query($conn, $sql);
+                        while ($row = mysqli_fetch_array($result)) {
+                            echo 'IDR ' . $row['price'];
+                        }
+                        ?>
+                    </h4>
                 </div>
                 <div class="flex justify-end items-center gap-x-1 text-xl">
                     <a href="" class="bg-blues px-7 py-3 text-white rounded-lg">Book Now</a>
