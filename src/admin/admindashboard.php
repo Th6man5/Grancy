@@ -83,8 +83,15 @@ if ($_SESSION['admin']) {
                                 <path d="M0,12V6C0,3.243,2.243,1,5,1h14c2.757,0,5,2.243,5,5v6h-3v-1c0-2.206-1.794-4-4-4h-2c-1.2,0-2.266,.542-3,1.382-.734-.84-1.8-1.382-3-1.382h-2c-2.206,0-4,1.794-4,4v1H0Zm9-3h-2c-1.103,0-2,.897-2,2v1h6v-1c0-1.103-.897-2-2-2Zm10,2c0-1.103-.897-2-2-2h-2c-1.103,0-2,.897-2,2v1h6v-1ZM0,14v6c0,.553,.448,1,1,1s1-.447,1-1v-2H22v2c0,.553,.447,1,1,1s1-.447,1-1v-6H0Z" />
                             </svg>
                             Rooms
+                            <?php
+                            include('../database/database.php');
+                            $sql = "SELECT COUNT(*) as total FROM rooms;";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_array($result);
+
+                            ?>
                         </p>
-                        <h1 class="flex justify-center items-center">6</h1>
+                        <h1 class="flex justify-center items-center"><?php echo $row['total'] ?></h1>
                         <div class="flex justify-end items-center">
                             <button class="btn-xs rounded bg-blues2 hover:bg-blues hover:text-white mr-5">more info...</button>
                         </div>
