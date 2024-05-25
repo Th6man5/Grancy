@@ -83,7 +83,7 @@ if ($_SESSION['admin']) {
                                     <a href="/grancy/src/admin/adminrooms_edit.php?id=' . $row['room_id'] . '" class="btn bg-yellow hover:shadow-md hover:bg-yellow group">
                                         <i class="bi bi-pencil-square  transition-all"></i>
                                     </a>
-                                    <a href="/grancy/src/admin/adminrooms_delete.php?id=' . $row['room_id'] . '" class="btn bg-red hover:shadow-md hover:bg-red group">
+                                    <a onclick="return confirm(\'Are you sure you want to delete this room type?\');" href="/grancy/src/admin/adminrooms_delete.php?id=' . $row['room_id'] . '" class="btn bg-red hover:shadow-md hover:bg-red group">
                                         <i class="bi bi-trash-fill  transition-all"></i>
                                     </a>
                                 </td>

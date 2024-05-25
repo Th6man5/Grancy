@@ -46,56 +46,28 @@ if ($_SESSION['admin']) {
         <div class="p-4 sm:ml-64">
             <div class="p-4 mt-14">
                 <h1>Users</h1>
-                
+
                 <div class="overflow-x-auto">
                     <table class="table">
                         <!-- head -->
                         <thead>
-                        <tr class="bg-blues2">
-                            <th>No</th>
-                            <th>ID users</th>
-                            <th>Username</th>
-                            <th>Name</th>
-                            <th>E-mail</th>
-                            <th>Password</th>
-                            <th>Number phone</th>
-                            <th>User Type <br> (admin/user)</th>
-                        </tr>
+                            <tr class="bg-blues2">
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>E-mail</th>
+                                <th>Number phone</th>
+                                <th>User Type <br> (admin/user)</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <!-- row 1 -->
-                        <tr>
-                            <th>1</th>
-                            <td>U101</td>
-                            <td>selvirn</td>
-                            <td>Selvi Riska</td>
-                            <td>selviriskanisa@gmail.com</td>
-                            <td>********</td>
-                            <td>085784152004</td>
-                            <td>user</td>
-                        </tr>
-                        <!-- row 2 -->
-                        <tr>
-                            <th>2</th>
-                            <td>U102</td>
-                            <td>masternim</td>
-                            <td>Mas Ternim</td>
-                            <td>masternim@gmail.com</td>
-                            <td>********</td>
-                            <td>088124567890</td>
-                            <td>user</td>
-                        </tr>
-                        <!-- row 3 -->
-                        <tr>
-                            <th>3</th>
-                            <td>U103</td>
-                            <td>johndoe</td>
-                            <td>John Doe</td>
-                            <td>johndoe@gmail.com</td>
-                            <td>********</td>
-                            <td>08123671234</td>
-                            <td>user</td>
-                        </tr>
+                            <!-- row 1 -->
+                            <tr>
+                                <th>1</th>
+                                <td>Selvi Riska</td>
+                                <td>selviriskanisa@gmail.com</td>
+                                <td>085784152004</td>
+                                <td>user</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
