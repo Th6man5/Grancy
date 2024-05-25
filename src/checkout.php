@@ -41,7 +41,7 @@
         @include('template/navbar.php');
         ?>
         <div class="p-20">
-            <a href="" class="text-xl" style="font-family: Lexend;">Back</a>
+            <a href="javascript:history.back()" class="text-xl" style="font-family: Lexend;">Back</a>
             <h3 class="bg-grey w-full text-center text-2xl p-2">Checkout</h3>
             <div class="w-full h-full grid grid-cols-3 grid-flow-col">
                 <div class="pr-10 pt-10 w-fit h-fit col-span-1">
