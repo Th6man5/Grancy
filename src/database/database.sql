@@ -54,6 +54,17 @@ CREATE TABLE bookings (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
+-- tabel transactions
+CREATE TABLE transactions (
+    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+    transac_date DATE NOT NULL,
+    payment_total INT NOT NULL,
+    payment_method VARCHAR(50) NOT NULL, 
+    booking_id INT NOT NULL,
+    FOREIGN KEY (booking_id) REFERENCES bookings(booking_id)
+);
+
+
 --Buat Insert tabel room_type
 INSERT INTO room_type (
 	type_name,

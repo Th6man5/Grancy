@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_id']) || isset($_SESSION['admin'])) {
-    header('Location: database/logout.php');
+if (!isset($_SESSION['user_id'])) {
+    header('Location: signin.php');
     exit();
 }
 $user_id = $_SESSION['user_id'];

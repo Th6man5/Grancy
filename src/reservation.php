@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['user_id']) || isset($_SESSION['admin'])) {
+    header('Location: database/logout.php');
+    exit();
+}
 $user_id = $_SESSION['user_id'];
 //SIMPEN DATA SEARCsd ROOM
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -14,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 //Booking
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['booking'])) {
     $checkin = $_POST['checkin'];
     $checkout = $_POST['checkout'];
@@ -58,8 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['booking'])) {
         // Handle no available room on the selected floor
         echo "No available rooms on the selected floor.";
     }
-} else {
-    echo "Invalid request.";
 }
 
 ?>
