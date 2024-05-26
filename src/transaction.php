@@ -1,3 +1,53 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id']) || isset($_SESSION['admin'])) {
+    header('Location: database/logout.php');
+    exit();
+}
+
+include_once('./database/database.php');
+
+$user_id = $_SESSION['user_id'];
+
+if (isset($_GET['transaction_id'])) {
+    $transaction_id = $_GET['transaction_id'];
+
+    // Fetch the transaction details
+    $sql = "
+        SELECT t.transac_date, t.payment_total, t.payment_method, b.checkin, b.checkout, b.guest, rt.type_name, rt.price, r.floor, u.fullname
+        FROM transactions t
+        JOIN bookings b ON t.booking_id = b.booking_id
+        JOIN rooms r ON b.room_id = r.room_id
+        JOIN room_type rt ON r.type_id = rt.type_id
+        JOIN users u ON b.user_id = u.user_id
+        WHERE t.transaction_id = ? AND b.user_id = ?
+    ";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ii', $transaction_id, $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $transaction = $result->fetch_assoc();
+
+    if (!$transaction) {
+        echo "Transaction not found.";
+        exit();
+    }
+
+    $transac_date = $transaction['transac_date'];
+    $payment_total = $transaction['payment_total'];
+    $payment_method = $transaction['payment_method'];
+    $checkin = $transaction['checkin'];
+    $checkout = $transaction['checkout'];
+    $guest = $transaction['guest'];
+    $type_name = $transaction['type_name'];
+    $pricePerNight = $transaction['price'];
+    $floor = $transaction['floor'];
+    $fullname = $transaction['fullname'];
+} else {
+    echo "Invalid request.";
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +91,7 @@
         @include('template/navbar.php');
         ?>
         <div class="w-full h-full px-20 pt-10">
-            <a href="" class="text-xl" style="font-family: Lexend;">Back</a>
+            <a href="homepage.php" class="text-xl" style="font-family: Lexend;">Back</a>
             <h3 class="bg-grey w-full text-center text-2xl p-2">Hotel Voucher</h3>
             <h3 class="text-lg text-left text-neutral-500">Please PRINT this voucher and bring when you CHECK IN in Grancy Hotel. Bring your credit card if your payment using credit card</h3>
 
@@ -49,7 +99,7 @@
                 <div class="flex-none join items-center justify-center border-neutral-500 border-2">
                     <div class="flex input w-60 items-center bg-white join-item">
                         <h3 class="flex-none text-xl">Order ID:</h3>
-                        <h4 class="flex-none text-xl">#000001020</h4>
+                        <h4 class="flex-none text-xl">#00000<?php echo $transaction_id ?></h4>
                     </div>
                     <div class="flex join-item relative items-center justify-center">
                         <div class="flex-none z-0 absolute">
@@ -58,26 +108,20 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="flex input w-48 items-center justify-center bg-white join-item">
+                    <div class="flex input w-52 items-center justify-center bg-white join-item">
                         <h3 class="flex text-xl">Date: </h3>
-                        <h4 class="flex text-xl">14/05/2024</h4>
+                        <h4 class="flex text-xl"><?php echo $transac_date ?></h4>
                     </div>
                 </div>
 
-                <div class="absolute flex-none w-fit h-fit right-0">
-                    <h2 class="text-blues2 text-3xl text-center">VERIFIED</h2>
-                    <div class="flex items-center justify-center">
-                        <h3 class="flex-none text-xl">admin:</h3>
-                        <h3 class="flex-none text-xl">#3123500011</h3>
-                    </div>
-                </div>
+
             </div>
 
             <div class="w-1/2 mb-20">
                 <div class="flex w-1/2 mb-4">
                     <h3 class="flex-none w-full text-2xl">Guest Name</h3>
                     <h3 class="flex-none w-fit text-2xl">:</h3>
-                    <h4 class="flex-none w-full text-2xl">John Doe</h4>
+                    <h4 class="flex-none w-full text-2xl"><?php echo $fullname ?></h4>
                 </div>
                 <div class="flex w-1/2">
                     <h3 class="flex-none w-full text-2xl">Country</h3>
@@ -93,29 +137,29 @@
                     <div class="flex w-1/2 mb-4">
                         <h3 class="flex-none w-full text-2xl">Check In</h3>
                         <h3 class="flex-none w-fit text-2xl">:</h3>
-                        <h4 class="flex-none w-full text-2xl">Monday, 15 May</h4>
+                        <h4 class="flex-none w-full text-2xl"><?php echo $checkin ?></h4>
                     </div>
                     <div class="flex w-1/2 mb-4">
-                        <h3 class="flex-none w-full text-2xl">Rooms & Guests</h3>
+                        <h3 class="flex-none w-full text-2xl">Guests</h3>
                         <h3 class="flex-none w-fit text-2xl">:</h3>
-                        <h4 class="flex-none w-full text-2xl">1 Room, 1 Guest</h4>
+                        <h4 class="flex-none w-full text-2xl"><?php echo $guest ?> Guest</h4>
                     </div>
                     <div class="flex w-1/2 mb-4">
                         <h3 class="flex-none w-full text-2xl">Room Type</h3>
                         <h3 class="flex-none w-fit text-2xl">:</h3>
-                        <h4 class="flex-none w-full text-2xl">Standard</h4>
+                        <h4 class="flex-none w-full text-2xl"><?php echo $type_name ?></h4>
                     </div>
                     <div class="flex w-1/2">
                         <h3 class="flex-none w-full text-2xl">Room Floor</h3>
                         <h3 class="flex-none w-fit text-2xl">:</h3>
-                        <h4 class="flex-none w-full text-2xl">6 (six)</h4>
+                        <h4 class="flex-none w-full text-2xl"><?php echo $floor ?></h4>
                     </div>
                 </div>
                 <div class="w-1/2">
                     <div class="flex w-1/2">
                         <h3 class="flex-none w-full text-2xl">Check Out</h3>
                         <h3 class="flex-none w-fit text-2xl">:</h3>
-                        <h4 class="flex-none w-full text-2xl">Tuesday, 16 May</h4>
+                        <h4 class="flex-none w-full text-2xl"><?php echo $checkout ?></h4>
                     </div>
                 </div>
             </div>
@@ -126,12 +170,12 @@
                 <div class="flex w-1/2 mb-4">
                     <h3 class="flex-none w-full text-2xl">Payment Type</h3>
                     <h3 class="flex-none w-fit text-2xl">:</h3>
-                    <h4 class="flex-none w-full text-2xl">Virtual Payment, Gopay</h4>
+                    <h4 class="flex-none w-full text-2xl"><?php echo $payment_method ?></h4>
                 </div>
                 <div class="flex w-1/2 mb-4">
                     <h3 class="flex-none w-full text-2xl">Charge</h3>
                     <h3 class="flex-none w-fit text-2xl">:</h3>
-                    <h4 class="flex-none w-full text-2xl">Rp1.643.500</h4>
+                    <h4 class="flex-none w-full text-2xl"><?php echo number_format($payment_total) ?></h4>
                 </div>
             </div>
 

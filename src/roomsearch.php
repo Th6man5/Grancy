@@ -1,39 +1,57 @@
 <?php
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: signin.php');
+    exit();
+}
+
 include_once('./database/database.php');
+
 //SEARCG ROOM
+ini_set('display_errors', 0);
+if ($_SESSION['user']) {
+    if (isset($_POST['submit'])) {
+        $checkin = $_POST['checkin'];
+        $checkout = $_POST['checkout'];
+        $guest = $_POST['guest'];
+        $type_id = $_POST['type_id'];
 
-if (isset($_POST['submit'])) {
-    $checkin = $_POST['checkin'];
-    $checkout = $_POST['checkout'];
-    $guest = $_POST['guest'];
-    $type_id = $_POST['type_id'];
-
-    header('Location: /grancy/src/roomsearch.php?checkin=' . urlencode($checkin) . '&checkout=' . urlencode($checkout) . '&guest=' . urlencode($guest) . '&type_id=' . urlencode($type_id));
-    exit();
-}
-
-//SIMPEN DATA SEARCsd ROOM
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (!isset($_GET['checkin']) || !isset($_GET['checkout']) || !isset($_GET['guest']) || !isset($_GET['type_id'])) {
-        header('Location: /grancy/src/homepage.php');
-        exit;
+        header('Location: /grancy/src/roomsearch.php?checkin=' . urlencode($checkin) . '&checkout=' . urlencode($checkout) . '&guest=' . urlencode($guest) . '&type_id=' . urlencode($type_id));
+        exit();
     }
-    $checkin = $_GET['checkin'];
-    $checkout = $_GET['checkout'];
-    $guest = $_GET['guest'];
-    $type_id = $_GET['type_id'];
+
+    //SIMPEN DATA SEARCsd ROOM
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if (!isset($_GET['checkin']) || !isset($_GET['checkout']) || !isset($_GET['guest']) || !isset($_GET['type_id'])) {
+            header('Location: /grancy/src/homepage.php');
+            exit;
+        }
+        $checkin = $_GET['checkin'];
+        $checkout = $_GET['checkout'];
+        $guest = $_GET['guest'];
+        $type_id = $_GET['type_id'];
+    }
+
+    //CHECKOUT
+    if (isset($_POST['reserve'])) {
+        $checkin = $_POST['checkin'];
+        $checkout = $_POST['checkout'];
+        $guest = $_POST['guest'];
+        $type_id = $_POST['type_id'];
+
+        header('Location: /grancy/src/reservation.php?checkin=' . urlencode($checkin) . '&checkout=' . urlencode($checkout) . '&guest=' . urlencode($guest) . '&type_id=' . urlencode($type_id));
+        exit();
+    }
 }
 
-//CHECKOUT
-if (isset($_POST['reserve'])) {
-    $checkin = $_POST['checkin'];
-    $checkout = $_POST['checkout'];
-    $guest = $_POST['guest'];
-    $type_id = $_POST['type_id'];
-
-    header('Location: /grancy/src/reservation.php?checkin=' . urlencode($checkin) . '&checkout=' . urlencode($checkout) . '&guest=' . urlencode($guest) . '&type_id=' . urlencode($type_id));
-    exit();
+if ($_SESSION['admin']) {
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if (!isset($_GET['id'])) {
+            header('Location: /grancy/src/admin/adminroomtype.php');
+            exit;
+        }
+        $type_id = $_GET['id'];
+    }
 }
 ?>
 
@@ -191,10 +209,17 @@ if (isset($_POST['reserve'])) {
             while ($row = mysqli_fetch_assoc($result)) {
         ?>
                 <form method="POST">
-                    <input type="hidden" name="checkin" value="<?php echo $checkin ?>">
-                    <input type="hidden" name="checkout" value="<?php echo $checkout ?>">
-                    <input type="hidden" name="guest" value="<?php echo $guest ?>">
-                    <input type="hidden" name="type_id" value="<?php echo $type_id ?>">
+                    <?php
+                    if ($_SESSION['user']) {
+                    ?>
+                        <input type="hidden" name="checkin" value="<?php echo $checkin ?>">
+                        <input type="hidden" name="checkout" value="<?php echo $checkout ?>">
+                        <input type="hidden" name="guest" value="<?php echo $guest ?>">
+                        <input type="hidden" name="type_id" value="<?php echo $type_id ?>">
+                    <?php
+                    } else {
+                    }
+                    ?>
                     <div class=" flex relative w-full h-full p-20">
                         <div class="flex-none w-80 h-fit">
                             <div class="w-fit h-fit">
@@ -258,11 +283,18 @@ if (isset($_POST['reserve'])) {
                                             <h3 class="flex-none text-blues2">/night</h3>
                                         </div>
                                     </div>
-                                    <div class="flex-none absolute right-0 text-xl">
-                                        <button type="submit" name="reserve" class="bg-blues px-7 py-3 text-white rounded-lg">
-                                            Book Now
-                                        </button>
-                                    </div>
+                                    <?php
+                                    if ($_SESSION['user']) {
+                                    ?>
+                                        <div class="flex-none absolute right-0 text-xl">
+                                            <button type="submit" name="reserve" class="bg-blues px-7 py-3 text-white rounded-lg">
+                                                Book Now
+                                            </button>
+                                        </div>
+                                    <?php
+                                    } else {
+                                    }
+                                    ?>
                                 </div>
                             </div>
                     <?php
@@ -273,7 +305,9 @@ if (isset($_POST['reserve'])) {
                     </div>
                 </form>
                 <?php
-                @include('template/footer.php');
+                if ($_SESSION['user']) {
+                    @include('template/footer.php');
+                }
                 ?>
 </body>
 
