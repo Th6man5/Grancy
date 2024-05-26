@@ -45,53 +45,46 @@ if ($_SESSION['admin']) {
 
         <div class="p-4 sm:ml-64">
             <div class="p-4 mt-14">
-                <h1>Orders</h1>
-                
+                <h1>Transaction</h1>
                 <div class="overflow-x-auto">
                     <table class="table">
                         <!-- head -->
                         <thead>
-                        <tr class="bg-blues2">
-                            <th>No</th>
-                            <th>ID Order</th>
-                            <th>Username</th>
-                            <th>Room</th>
-                            <th>Order Date</th>
-                            <th>Payment Type</th>
-                            <th>Total Payment</th>
-                        </tr>
+                            <tr class="bg-blues2">
+                                <th>No</th>
+                                <th>Fullname</th>
+                                <th>Room</th>
+                                <th>Order Date</th>
+                                <th>Payment Type</th>
+                                <th>Total Payment</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <!-- row 1 -->
-                        <tr>
-                            <th>1</th>
-                            <td>GCY101</td>
-                            <td>selvirn</td>
-                            <td>102</td>
-                            <td>25/05/2024</td>
-                            <td>gopay</td>
-                            <td>Rp.500.000</td>
-                        </tr>
-                        <!-- row 2 -->
-                        <tr>
-                            <th>2</th>
-                            <td>GCY102</td>
-                            <td>masternim</td>
-                            <td>203</td>
-                            <td>25/05/2024</td>
-                            <td>gopay</td>
-                            <td>Rp.350.000</td>
-                        </tr>
-                        <!-- row 3 -->
-                        <tr>
-                            <th>3</th>
-                            <td>GCY103</td>
-                            <td>johndoe</td>
-                            <td>301</td>
-                            <td>25/05/2024</td>
-                            <td>gopay</td>
-                            <td>Rp.400.000</td>
-                        </tr>
+                            <?php
+                            include('../database/database.php');
+                            $sql = "SELECT t.transac_date, t.payment_total, t.payment_method, b.room_id, b.user_id, r.room_number, u.fullname
+                            FROM transactions t
+                            JOIN bookings b ON t.booking_id = b.booking_id
+                            JOIN rooms r ON b.room_id = r.room_id
+                            JOIN users u ON b.user_id = u.user_id";
+
+                            $result = mysqli_query($conn, $sql);
+
+                            if (mysqli_num_rows($result) > 0) {
+                                $no = 1;
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo '<tr>
+                                <th>' . $no . '</th>
+                                <td>' . $row['fullname'] . '</td>
+                                <td>' . $row['room_number'] . '</td>
+                                <td>' . $row['transac_date'] . '</td>
+                                <td>' . $row['payment_method'] . '</td>
+                                <td>' . number_format($row['payment_total']) . '</td>
+                                        </tr>';
+                                    $no++;
+                                }
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>

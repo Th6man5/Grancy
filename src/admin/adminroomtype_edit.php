@@ -11,6 +11,7 @@ $bath = '';
 $intertainment = '';
 $equipment = '';
 $refreshments = '';
+$picture = '';
 
 $successMessage = '';
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -40,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $intertainment = $row['intertainment'];
     $equipment = $row['equipment'];
     $refreshments = $row['refreshments'];
+    $picture = $row['picture'];
 } else {
     $id = $_POST['id'];
     $type_name = $_POST['type_name'];
@@ -52,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $intertainment = $_POST['intertainment'];
     $equipment = $_POST['equipment'];
     $refreshments = $_POST['refreshments'];
+    $picture = $_POST['picture'];
 
     do {
         if (empty($type_name) || empty($square_meter) || empty($square_foot) || empty($price) || empty($about) || empty($feature) || empty($bath) || empty($intertainment) || empty($equipment) || empty($refreshments)) {
@@ -59,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             break;
         }
 
-        $sql = "UPDATE room_type SET type_name = '$type_name', square_meter = '$square_meter', square_foot = '$square_foot', price = '$price', about = '$about', feature = '$feature', bath = '$bath', intertainment = '$intertainment', equipment = '$equipment', refreshments = '$refreshments' WHERE type_id = $id";
+        $sql = "UPDATE room_type SET type_name = '$type_name', square_meter = '$square_meter', square_foot = '$square_foot', price = '$price', about = '$about', feature = '$feature', bath = '$bath', intertainment = '$intertainment', equipment = '$equipment', refreshments = '$refreshments', picture = '$picture' WHERE type_id = $id";
 
         $result = mysqli_query($conn, $sql);
         if (!$result) {
@@ -124,7 +127,7 @@ if ($_SESSION['admin']) {
                 ';
                 }
                 ?>
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div class="grid grid-cols-2 w-full h-full gap-4 p-10">
                         <div class="col-span-1">
