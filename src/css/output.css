@@ -2130,6 +2130,10 @@ html {
   width: 83.333333%;
 }
 
+.w-52 {
+  width: 13rem;
+}
+
 .w-56 {
   width: 14rem;
 }
@@ -2165,10 +2169,6 @@ html {
 
 .w-full {
   width: 100%;
-}
-
-.w-52 {
-  width: 13rem;
 }
 
 .flex-1 {
@@ -2414,6 +2414,10 @@ html {
 
 .border-r {
   border-right-width: 1px;
+}
+
+.border-none {
+  border-style: none;
 }
 
 .border-neutral-500 {
@@ -2664,6 +2668,11 @@ html {
   color: rgb(75 188 199 / var(--tw-text-opacity));
 }
 
+.text-green {
+  --tw-text-opacity: 1;
+  color: rgb(0 176 28 / var(--tw-text-opacity));
+}
+
 .text-neutral-500 {
   --tw-text-opacity: 1;
   color: rgb(115 115 115 / var(--tw-text-opacity));
@@ -2677,11 +2686,6 @@ html {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-green {
-  --tw-text-opacity: 1;
-  color: rgb(0 176 28 / var(--tw-text-opacity));
 }
 
 .opacity-50 {
