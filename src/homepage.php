@@ -56,6 +56,29 @@ if (isset($_POST['submit'])) {
             font-weight: 300;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkinInput = document.getElementById('checkin');
+            const checkoutInput = document.getElementById('checkout');
+            const nightsDisplay = document.getElementById('nights');
+
+            function calculateNights() {
+                const checkinDate = new Date(checkinInput.value);
+                const checkoutDate = new Date(checkoutInput.value);
+
+                if (checkinDate && checkoutDate && checkinDate < checkoutDate) {
+                    const timeDifference = checkoutDate - checkinDate;
+                    const nights = timeDifference / (1000 * 3600 * 24);
+                    nightsDisplay.textContent = `${nights} Night${nights !== 1 ? 's' : ''}`;
+                } else {
+                    nightsDisplay.textContent = '1 Night';
+                }
+            }
+
+            checkinInput.addEventListener('change', calculateNights);
+            checkoutInput.addEventListener('change', calculateNights);
+        });
+    </script>
     <title>Homepage</title>
 </head>
 
@@ -79,7 +102,7 @@ if (isset($_POST['submit'])) {
                         <div class="flex-none join shadow-lg">
                             <!-- checkin -->
                             <div class="flex input w-48 items-center justify-center bg-white join-item">
-                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-none mr-2 ">
+                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-none mr-2">
                                     <path d="M0.5 21.75C0.5 23.875 2.125 25.5 4.25 25.5H21.75C23.875 25.5 25.5 23.875 25.5 21.75V11.75H0.5V21.75ZM21.75 3H19.25V1.75C19.25 1 18.75 0.5 18 0.5C17.25 0.5 16.75 1 16.75 1.75V3H9.25V1.75C9.25 1 8.75 0.5 8 0.5C7.25 0.5 6.75 1 6.75 1.75V3H4.25C2.125 3 0.5 4.625 0.5 6.75V9.25H25.5V6.75C25.5 4.625 23.875 3 21.75 3Z" fill="black" fill-opacity="0.65" />
                                 </svg>
                                 <input type="date" id="checkin" name="checkin" class="flex-none text-sm">
@@ -92,7 +115,7 @@ if (isset($_POST['submit'])) {
                                     </svg>
                                 </div>
                                 <div class="flex-none z-10 absolute">
-                                    <div class="px-1 py-1 shadow-lg rounded-lg bg-grey text-xs">1 Night</div>
+                                    <div id="nights" class="px-1 py-1 shadow-lg rounded-lg bg-grey text-xs">1 Night</div>
                                 </div>
                             </div>
                             <!-- checkout -->
@@ -190,6 +213,7 @@ if (isset($_POST['submit'])) {
         @include('template/footer.php');
         ?>
     </div>
+
 
 </body>
 

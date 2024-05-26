@@ -57,11 +57,13 @@
                 if ($row['user_type'] == 'admin') {
                     $_SESSION['user_name'] = $row['fullname'];
                     $_SESSION['admin'] = $row['user_type'];
+                    $_SESSION['user_id'] = $row['user_id'];
                     header('Location: admin/admindashboard.php');
                     exit();
                 } elseif ($row['user_type'] == 'user') {
                     $_SESSION['user_name'] = $row['fullname'];
                     $_SESSION['user'] = $row['user_type'];
+                    $_SESSION['user_id'] = $row['user_id'];
                     header('Location: homepage.php');
                     exit();
                 } else {
